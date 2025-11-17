@@ -1,17 +1,27 @@
+---
+$id: https://process.org.ai/ATTRIBUTION
+$context: https://schema.org
+$type: AboutPage
+name: Attribution for process.org.ai
+description: Data source attribution and licensing information
+license: CC-BY-SA-4.0
+dateModified: 2025-01-17
+---
+
 # Attribution
 
 This document provides detailed attribution for all data sources used in process.org.ai.
 
 ## Data Sources
 
-### APQC Process Classification Framework (PCF) v7.4
+### APQC Process Classification Framework v7.4
 
-- **Source**: [APQC PCF](https://www.apqc.org/process-frameworks)
-- **License**: Creative Commons Attribution 4.0 International (CC BY 4.0)
+- **Source**: [APQC Process Classification Framework v7.4](https://www.apqc.org/process-frameworks)
+- **License**: CC BY 4.0
 - **Copyright**: APQC (American Productivity & Quality Center)
 - **Data Used**: 1,921 business processes across 13 categories
 - **Attribution Required**: Yes
-- **Changes Made**: Semantic parsing into GraphDL patterns, MDXLD generation, hierarchical navigation
+- **Changes Made**: Semantic parsing into GraphDL patterns, MDXLD generation, hierarchical navigation, "and"/"or" expansion
 
 **Citation**:
 ```
@@ -22,18 +32,17 @@ Licensed under CC BY 4.0
 
 ## How We Use This Data
 
-The process.org.ai ontology extends APQC PCF by:
+The process.org.ai ontology extends APQC Process Classification Framework v7.4 by:
 
 1. **Semantic Naming**: Converting process names to GraphDL patterns (verb.Object.preposition.Object)
 2. **MDXLD Generation**: Creating structured MDX files with frontmatter and metadata
 3. **Expansion**: Splitting compound processes ("and"/"or") into individual files (1,921 → 2,704 files)
 4. **Hierarchical Navigation**: Building 5-level hierarchy with parent-child relationships
 5. **Business-as-Code Integration**: Enabling semantic patterns for `$.Process.develop.Vision` usage
-6. **SDK Integration**: Seamless integration with sdk.do and the .org.ai ecosystem
 
 ## Our License
 
-This derived work is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), which adds the ShareAlike requirement to ensure derivatives remain open while maintaining compatibility with the original APQC license.
+This derived work is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), maintaining compatibility with the original APQC Process Classification Framework v7.4 license while using the current recommended version.
 
 ## Required Attribution
 
@@ -41,8 +50,21 @@ When using process.org.ai, please include:
 
 ```
 Based on process.org.ai (https://process.org.ai)
-Data sourced from APQC Process Classification Framework v7.4 (https://www.apqc.org)
+Data sourced from APQC Process Classification Framework v7.4 (https://www.apqc.org/process-frameworks)
 Licensed under CC BY-SA 4.0
+```
+
+For academic or research use, you may cite as:
+
+```bibtex
+@software{{processorgai2025,
+  title = {{process.org.ai: APQC Process Classification Framework for Business-as-Code}},
+  author = {{{{.do Platform Team}}}},
+  year = {{2025}},
+  url = {{https://process.org.ai}},
+  license = {{CC-BY-SA-4.0}},
+  note = {{Based on APQC Process Classification Framework v7.4}}
+}}
 ```
 
 ## Acknowledgments
@@ -54,9 +76,9 @@ APQC has been a pioneer in process management since 1977, providing research, be
 ## Contact
 
 For questions about attribution or licensing:
-- Website: https://process.org.ai
-- GitHub: https://github.com/dot-org-ai/process.org.ai/issues
-- Community: https://github.com/dot-org-ai/community
+- **Website**: https://process.org.ai
+- **GitHub**: https://github.com/dot-org-ai/process.org.ai/issues
+- **Community**: https://github.com/dot-org-ai/community
 
 ## Updates
 

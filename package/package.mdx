@@ -1,0 +1,134 @@
+---
+$id: https://process.org.ai
+$context: https://schema.org
+$type: https://schema.org.ai/Package
+name: process.org.ai
+description: APQC Process Classification Framework with 1,921 processes for Business-as-Code
+version: 1.0.0
+license: CC-BY-SA-4.0
+author:
+  $type: https://schema.org/Organization
+  name: .do Platform Team
+  url: https://platform.do
+repository:
+  $type: https://schema.org/SoftwareSourceCode
+  type: git
+  url: https://github.com/dot-org-ai/process.org.ai
+homepage: https://process.org.ai
+keywords:
+  - ontology
+  - semantic-web
+  - business-as-code
+  - mdxld
+  - process
+  - org-ai
+programmingLanguage: TypeScript
+runtimePlatform: node
+exports:
+  ".":
+    import: ./dist/index.mjs
+    require: ./dist/index.js
+    types: ./dist/index.d.ts
+  "./types":
+    import: ./dist/types.mjs
+    require: ./dist/types.js
+    types: ./dist/types.d.ts
+  "./data":
+    import: ./dist/data.mjs
+    require: ./dist/data.js
+    types: ./dist/data.d.ts
+  "./schemas":
+    import: ./dist/schemas.mjs
+    require: ./dist/schemas.js
+    types: ./dist/schemas.d.ts
+dependencies:
+  zod: ^3.22.0
+devDependencies:
+  "@types/node": ^20.0.0
+  mdxe: ^1.0.0
+  typescript: ^5.3.0
+  vitest: ^1.0.0
+peerDependencies:
+  sdk.do: ^1.0.0
+engines:
+  node: ">=18.0.0"
+scripts:
+  build: mdxe build
+  dev: mdxe dev
+  test: vitest
+  typecheck: tsc --noEmit
+  prepublishOnly: pnpm build && pnpm test
+---
+
+# process.org.ai
+
+APQC Process Classification Framework with 1,921 processes for Business-as-Code
+
+## Installation
+
+```bash
+npm install process.org.ai
+# or
+pnpm add process.org.ai
+# or
+yarn add process.org.ai
+```
+
+## Usage
+
+```typescript
+import {{ $ }} from 'sdk.do'
+import type {{ Process }} from 'process.org.ai'
+
+// Semantic patterns
+const item = await $.Process.create({{
+  $type: 'Process',
+  name: 'Example'
+}})
+
+const result = await $.Process.get('item-id')
+```
+
+## Tree-Shakable Exports
+
+```typescript
+// Import specific types
+import {{ Process }} from 'process.org.ai/types'
+
+// Import specific data
+import {{ ProcessData }} from 'process.org.ai/data'
+
+// Import Zod schemas
+import {{ ProcessSchema }} from 'process.org.ai/schemas'
+```
+
+## Build Process
+
+This package is built using **mdxe** (MDX Execution Engine) with zero configuration:
+
+1. **Parse MDX** - All `.mdx` files in `things/` directory
+2. **Extract Frontmatter** - YAML frontmatter becomes structured data
+3. **Generate Types** - TypeScript interfaces from frontmatter
+4. **Generate Schemas** - Zod schemas for validation
+5. **Generate Data** - Tree-shakable metadata exports
+6. **Build Hierarchy** - Parent-child relationships from `subClassOf`
+7. **Compile** - ESM + CJS bundles with declarations
+
+No config files needed - everything is derived from MDX frontmatter with `$type: https://schema.org.ai/Package`.
+
+## Features
+
+- **2,704 MDX files** (1.41x expansion from "and"/"or" splitting)
+- GraphDL semantic naming (verb.Object.preposition.Object)
+- 5-level hierarchy (Category → Process Group → Process → Activity → Task)
+- Parent-child navigation
+- Business-as-Code integration
+- APQC code cross-reference
+
+## License
+
+Licensed under [CC BY-SA 4.0](../LICENSE).
+
+Based on APQC Process Classification Framework v7.4 (https://www.apqc.org/process-frameworks) - CC BY 4.0.
+
+See [ATTRIBUTION.md](../ATTRIBUTION.md) for details.
