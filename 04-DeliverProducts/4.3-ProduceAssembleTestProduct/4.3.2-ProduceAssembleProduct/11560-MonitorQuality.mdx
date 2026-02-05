@@ -1,0 +1,141 @@
+---
+name: 'Monitor quality'
+code: '11560'
+hierarchyId: '4.3.2.4'
+category: 'Deliver Products'
+processGroup: 'Produce/Assemble/Test product'
+level: Activity
+verb: 'Monitor'
+object: 'Quality'
+metricsAvailable: false
+parent: '4.3.2'
+---
+
+# Monitor quality
+
+> Business-as-Code definition for monitor quality. Models the manufacturing activities within manufacturing to ensure efficient and compliant production operations.
+
+## Overview
+
+Observing and tracking the quality of products during the manufacturing process. Implement statistical process control, in-line inspections, and automated quality checks to detect defects early and maintain consistent product quality throughout production.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Produce/Assemble product] --> B[Monitor quality]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+monitor:
+  object: Quality
+  actor: ProductionManager
+  result: MonitorOutcome
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| monitorActivity | Monitor quality per established procedures |
+| reviewInputs | Assess required inputs and prerequisites for monitor quality |
+| executeProcess | Carry out the core manufacturing tasks following standard operating procedures |
+| documentResults | Record outcomes, observations, and any deviations from standard |
+| reportStatus | Communicate status and results to supervisors and downstream teams |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| inputsReviewed | Inputs and prerequisites assessed for monitor quality |
+| processExecuted | Core manufacturing tasks completed per standard procedures |
+| resultsDocumented | Outcomes and observations recorded in production records |
+| statusReported | Status and results communicated to relevant teams |
+| deviationDetected | Non-standard condition identified during process execution |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getProductionStatus | Retrieve current status of monitor quality activities |
+| getProductionRecords | Query production records for a specific batch, lot, or period |
+| findDeviations | Identify deviations from standard operating procedures |
+| getPerformanceMetrics | Query performance metrics for manufacturing activities |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[reviewInputs] --> B[executeProcess]
+    B --> C{Deviations?}
+    C -->|Yes| D[documentResults]
+    D --> E[escalateIssue]
+    E --> B
+    C -->|No| F[documentResults]
+    F --> G[reportStatus]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| reviewInputs | ProductionManager | PlantManager | QualityAssurance | SupplyChain |
+| executeProcess | ProductionManager | PlantManager | Maintenance | Quality |
+| documentResults | ProductionManager | PlantManager | QualityAssurance | Regulatory |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.3.1 Schedule production | Upstream - production schedule drives execution |
+| 4.3.3 Perform quality testing | Parallel - quality testing validates production output |
+| 4.1.5 Create and manage master production schedule | Upstream - MPS provides production targets |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Manufacturing | Primary owner of production operations |
+| Quality Assurance | Validates product quality and process compliance |
+| Maintenance | Ensures equipment reliability for production |
+| Supply Chain | Coordinates materials availability for production |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| ProductionManager | Leads manufacturing activities on the shop floor |
+| Quality Inspector | Verifies product and process quality |
+| Production Supervisor | Oversees daily production execution |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Overall Equipment Effectiveness | Combined measure of availability, performance, and quality | % |
+| First Pass Yield | Percentage of products passing quality on first attempt | % |
+| Production Cycle Time | Average time to complete monitor quality | Hours |
+
+## Usage
+
+```typescript
+import { monitorQuality } from '@headlessly/monitor-quality'
+
+const client = monitorQuality()
+
+// Review inputs for production activity
+const inputs = await client.reviewInputs({
+  productionOrderId: 'PO-2025-0847',
+  checkMaterials: true,
+  checkEquipment: true
+})
+
+// Execute the production process
+const result = await client.executeProcess({
+  inputsId: inputs.id,
+  standardProcedure: 'SOP-MANU-001'
+})
+```

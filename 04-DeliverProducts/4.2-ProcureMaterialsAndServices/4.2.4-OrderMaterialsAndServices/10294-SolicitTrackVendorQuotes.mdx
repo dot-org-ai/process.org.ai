@@ -1,0 +1,142 @@
+---
+name: 'Solicit/Track vendor quotes'
+code: '10294'
+hierarchyId: '4.2.4.3'
+category: 'Deliver Products'
+processGroup: 'Procure materials and services'
+level: Activity
+verb: 'Solicit/Track'
+object: 'Vendor Quotes'
+metricsAvailable: false
+parent: '4.2.4'
+---
+
+# Solicit/Track vendor quotes
+
+> Business-as-Code definition for solicit/track vendor quotes. Models the ordering processes within procurement to ensure materials and services are acquired efficiently and cost-effectively.
+
+## Overview
+
+Requesting quotes from suppliers. Use a request for quotation (RFQ) to invite suppliers into a bidding process for specific products/services.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Order materials and services] --> B[Solicit/Track vendor quotes]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+solicitAndTrack:
+  object: Vendor Quotes
+  actor: ProcurementSpecialist
+  result: VendorQuotesTracked
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| solicitVendorQuotes | Solicit vendor quotes based on organizational requirements |
+| reviewRequirements | Assess business needs and specifications for procurement activities |
+| evaluateOptions | Compare available options against cost, quality, and delivery criteria |
+| obtainApproval | Secure necessary approvals from budget holders and management |
+| executeAction | Carry out solicit/track vendor quotes tasks and document outcomes |
+| monitorOutcomes | Track results and measure effectiveness of procurement actions |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| requirementsReviewed | Business needs and specifications assessed for procurement |
+| optionsEvaluated | Available options compared against selection criteria |
+| approvalObtained | Required approvals secured from management |
+| actionExecuted | Solicit/Track vendor quotes tasks completed and documented |
+| outcomesMonitored | Results tracked and effectiveness measured |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getProcurementStatus | Retrieve current status of solicit/track vendor quotes activities |
+| findSupplierOptions | Query available suppliers and their capabilities for this requirement |
+| getSpendAnalysis | Retrieve spend analysis data for the relevant category |
+| getProcurementHistory | Query historical data for vendor quotes activities |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[reviewRequirements] --> B[evaluateOptions]
+    B --> C[obtainApproval]
+    C --> D{Approved?}
+    D -->|No| B
+    D -->|Yes| E[executeAction]
+    E --> F[monitorOutcomes]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| reviewRequirements | ProcurementSpecialist | VP Procurement | Requestors, Finance | Operations |
+| evaluateOptions | ProcurementSpecialist | VP Procurement | QualityAssurance, Legal | Suppliers |
+| executeAction | ProcurementSpecialist | VP Procurement | SupplyChain | Finance |
+| monitorOutcomes | ProcurementAnalyst | VP Procurement | Finance, Quality | Executive |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.2.1 Provide sourcing governance and perform category management | Upstream - sourcing strategy guides procurement activities |
+| 4.2.4 Order materials and services | Parent process |
+| 4.1.4 Create materials plan | Upstream - materials plan defines procurement requirements |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Procurement | Primary owner of materials and services acquisition |
+| Finance | Approves budgets and validates cost-effectiveness |
+| Quality Assurance | Validates supplier quality capabilities |
+| Legal | Reviews contract terms and compliance requirements |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| ProcurementSpecialist | Primary executor of procurement activities |
+| Procurement Analyst | Provides analytical support and spend analysis |
+| Category Manager | Manages category strategy and supplier portfolio |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Procurement Cycle Time | Average time to complete solicit/track vendor quotes | Days |
+| Cost Savings Achieved | Savings realized through procurement activities | % |
+| Supplier Quality Rate | Percentage of procured items meeting quality specifications | % |
+
+## Usage
+
+```typescript
+import { solicitTrackVendorQuotes } from '@headlessly/solicit-track-vendor-quotes'
+
+const client = solicitTrackVendorQuotes()
+
+// Review requirements for procurement
+const requirements = await client.reviewRequirements({
+  category: 'vendor-quotes',
+  urgency: 'standard',
+  budgetCode: 'PROC-2025'
+})
+
+// Evaluate options and execute
+const evaluation = await client.evaluateOptions({
+  requirementsId: requirements.id,
+  criteria: ['cost', 'quality', 'delivery-time']
+})
+```

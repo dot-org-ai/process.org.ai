@@ -1,0 +1,140 @@
+---
+name: 'Manage inbound material flow'
+code: '10350'
+hierarchyId: '4.4.2.2'
+category: 'Deliver Products'
+processGroup: 'Manage logistics and warehousing'
+level: Activity
+verb: 'Manage'
+object: 'Inbound Material Flow'
+metricsAvailable: false
+parent: '4.4.2'
+---
+
+# Manage inbound material flow
+
+> Business-as-Code definition for manage inbound material flow. Models the inbound logistics processes to ensure efficient movement, storage, and compliance of goods throughout the supply chain.
+
+## Overview
+
+Managing all the internal activities related to the flow/transfer of materials. Manage materials being delivered to distribution center or warehouse. Gauge the time taken for delivery and if the delivery process is on time.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Plan and manage inbound material flow] --> B[Manage inbound material flow]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+manage:
+  object: Inbound Material Flow
+  actor: InboundLogisticsManager
+  result: ManageOutput
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| manageActivity | Manage inbound material flow following established logistics procedures |
+| assessRequirements | Evaluate operational requirements for manage inbound material flow |
+| coordinateExecution | Coordinate logistics activities with internal teams and external partners |
+| monitorPerformance | Track performance metrics for inbound logistics activities |
+| resolveExceptions | Identify and address operational exceptions and delays |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| requirementsAssessed | Operational requirements evaluated for manage inbound material flow |
+| executionCoordinated | Logistics activities coordinated with all parties |
+| performanceMonitored | inbound logistics performance metrics updated |
+| exceptionsResolved | Operational exceptions identified and addressed |
+| activityCompleted | Manage inbound material flow completed and documented |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getOperationalStatus | Retrieve current status of manage inbound material flow activities |
+| findExceptions | Identify pending exceptions requiring attention |
+| getPerformanceDashboard | Query performance metrics for inbound logistics operations |
+| getShipmentTracking | Retrieve real-time tracking data for shipments and materials |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[assessRequirements] --> B[coordinateExecution]
+    B --> C[monitorPerformance]
+    C --> D{Exceptions?}
+    D -->|Yes| E[resolveExceptions]
+    E --> B
+    D -->|No| F[Report Completion]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| assessRequirements | InboundLogisticsManager | VP Logistics | SupplyChain | Finance |
+| coordinateExecution | InboundLogisticsManager | VP Logistics | Warehousing, Carriers | CustomerService |
+| monitorPerformance | LogisticsAnalyst | VP Logistics | Operations | Executive |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.4.1 Provide logistics governance | Upstream - governance policies guide logistics operations |
+| 4.1.6 Plan distribution requirements | Upstream - distribution plans drive logistics execution |
+| 4.4.3 Operate warehousing | Parallel - warehousing supports logistics flow |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Logistics | Primary owner of logistics operations |
+| Warehousing | Manages storage, picking, and staging operations |
+| Transportation | Handles carrier management and shipment execution |
+| Customer Service | Communicates delivery status to customers |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| InboundLogisticsManager | Leads inbound logistics operations |
+| Logistics Coordinator | Coordinates daily logistics activities |
+| Warehouse Associate | Executes physical warehouse operations |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| On-Time Performance | Percentage of inbound logistics activities completed on schedule | % |
+| Cost Per Unit | Average logistics cost per unit for inbound logistics | USD/Unit |
+| Exception Rate | Frequency of exceptions in inbound logistics operations | Count/Week |
+
+## Usage
+
+```typescript
+import { manageInboundMaterialFlow } from '@headlessly/manage-inbound-material-flow'
+
+const client = manageInboundMaterialFlow()
+
+// Assess requirements for logistics activity
+const requirements = await client.assessRequirements({
+  activityType: 'inbound-logistics',
+  scope: 'inbound-material-flow',
+  period: '2025-08'
+})
+
+// Coordinate execution with partners
+const execution = await client.coordinateExecution({
+  requirementsId: requirements.id,
+  partners: ['carrier-a', 'warehouse-east']
+})
+```

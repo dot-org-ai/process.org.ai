@@ -1,0 +1,140 @@
+---
+name: 'Manage warehouse transfers'
+code: '20957'
+hierarchyId: '4.4.3.8'
+category: 'Deliver Products'
+processGroup: 'Manage logistics and warehousing'
+level: Activity
+verb: 'Manage'
+object: 'Warehouse Transfers'
+metricsAvailable: false
+parent: '4.4.3'
+---
+
+# Manage warehouse transfers
+
+> Business-as-Code definition for manage warehouse transfers. Models the warehousing processes to ensure efficient movement, storage, and compliance of goods throughout the supply chain.
+
+## Overview
+
+Shipping items from one warehouse to another in a multi-warehouse environment. A warehouse transfer is typically handled electronically in a system designed to replicate the physical processes involved with transferring items from one warehouse to another.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Operate warehousing] --> B[Manage warehouse transfers]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+manage:
+  object: Warehouse Transfers
+  actor: WarehouseManager
+  result: ManageOutput
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| manageActivity | Manage warehouse transfers following established logistics procedures |
+| assessRequirements | Evaluate operational requirements for manage warehouse transfers |
+| coordinateExecution | Coordinate logistics activities with internal teams and external partners |
+| monitorPerformance | Track performance metrics for warehousing activities |
+| resolveExceptions | Identify and address operational exceptions and delays |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| requirementsAssessed | Operational requirements evaluated for manage warehouse transfers |
+| executionCoordinated | Logistics activities coordinated with all parties |
+| performanceMonitored | warehousing performance metrics updated |
+| exceptionsResolved | Operational exceptions identified and addressed |
+| activityCompleted | Manage warehouse transfers completed and documented |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getOperationalStatus | Retrieve current status of manage warehouse transfers activities |
+| findExceptions | Identify pending exceptions requiring attention |
+| getPerformanceDashboard | Query performance metrics for warehousing operations |
+| getShipmentTracking | Retrieve real-time tracking data for shipments and materials |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[assessRequirements] --> B[coordinateExecution]
+    B --> C[monitorPerformance]
+    C --> D{Exceptions?}
+    D -->|Yes| E[resolveExceptions]
+    E --> B
+    D -->|No| F[Report Completion]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| assessRequirements | WarehouseManager | VP Logistics | SupplyChain | Finance |
+| coordinateExecution | WarehouseManager | VP Logistics | Warehousing, Carriers | CustomerService |
+| monitorPerformance | LogisticsAnalyst | VP Logistics | Operations | Executive |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.4.1 Provide logistics governance | Upstream - governance policies guide logistics operations |
+| 4.1.6 Plan distribution requirements | Upstream - distribution plans drive logistics execution |
+| 4.4.3 Operate warehousing | Parent process |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Logistics | Primary owner of logistics operations |
+| Warehousing | Manages storage, picking, and staging operations |
+| Transportation | Handles carrier management and shipment execution |
+| Customer Service | Communicates delivery status to customers |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| WarehouseManager | Leads warehousing operations |
+| Logistics Coordinator | Coordinates daily logistics activities |
+| Warehouse Associate | Executes physical warehouse operations |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| On-Time Performance | Percentage of warehousing activities completed on schedule | % |
+| Cost Per Unit | Average logistics cost per unit for warehousing | USD/Unit |
+| Exception Rate | Frequency of exceptions in warehousing operations | Count/Week |
+
+## Usage
+
+```typescript
+import { manageWarehouseTransfers } from '@headlessly/manage-warehouse-transfers'
+
+const client = manageWarehouseTransfers()
+
+// Assess requirements for logistics activity
+const requirements = await client.assessRequirements({
+  activityType: 'warehousing',
+  scope: 'warehouse-transfers',
+  period: '2025-08'
+})
+
+// Coordinate execution with partners
+const execution = await client.coordinateExecution({
+  requirementsId: requirements.id,
+  partners: ['carrier-a', 'warehouse-east']
+})
+```

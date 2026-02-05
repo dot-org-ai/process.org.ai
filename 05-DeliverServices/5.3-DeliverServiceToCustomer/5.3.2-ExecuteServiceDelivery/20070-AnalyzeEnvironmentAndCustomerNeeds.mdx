@@ -1,0 +1,162 @@
+---
+name: 'Analyze environment and customer needs'
+code: '20070'
+hierarchyId: '5.3.2.1'
+category: 'Deliver Services'
+processGroup: 'Deliver service to customer'
+level: Activity
+verb: 'Analyze'
+object: 'Environment And Customer Needs'
+metricsAvailable: false
+parent: '5.3.2'
+---
+
+# Analyze environment and customer needs
+
+> Business-as-Code definition for conducting a thorough assessment of the customer's operating environment, technical landscape, and evolving needs to inform the design of an effective service delivery solution.
+
+## Overview
+
+Understanding the needs of the customer and providing the necessary resources to meet those requirements within the scope of the organization.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Execute service delivery] --> B[Analyze environment and customer needs]
+    A --> C[Define solution]
+    A --> D[Validate solution]
+    A --> E[Identify changes]
+    A --> F[Obtain approval to proceed]
+    A --> G[Make build/buy solution]
+    A --> H[Deploy solution]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+analyze:
+  object: Environment And Customer Needs
+  actor: BusinessAnalyst
+  result: NeedsAssessmentReport
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| assessCurrentEnvironment | Evaluate the customer's existing systems, processes, and infrastructure |
+| gatherStakeholderRequirements | Conduct interviews and workshops to capture stakeholder needs |
+| documentBusinessProcesses | Map current-state business processes impacted by the service |
+| identifyConstraintsAndDependencies | Catalog technical, organizational, and regulatory constraints |
+| performGapAnalysis | Compare current state against desired outcomes to identify gaps |
+| prioritizeNeeds | Rank customer needs by business impact and urgency |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| environmentAssessed | Customer environment evaluation completed |
+| stakeholderRequirementsGathered | Stakeholder needs captured and documented |
+| businessProcessesDocumented | Current-state process maps created |
+| constraintsIdentified | Technical and organizational constraints cataloged |
+| gapAnalysisCompleted | Gap analysis between current and desired state finished |
+| needsPrioritized | Customer needs ranked and approved |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getNeedsAssessment | Retrieve the needs assessment report for an engagement |
+| findStakeholderRequirements | List requirements filtered by stakeholder, priority, or category |
+| getGapAnalysis | Retrieve gap analysis results for an engagement |
+| findConstraints | List constraints by type or severity |
+| getProcessMaps | Retrieve documented business process maps |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[assessCurrentEnvironment] --> B[gatherStakeholderRequirements]
+    B --> C[documentBusinessProcesses]
+    C --> D[identifyConstraintsAndDependencies]
+    D --> E[performGapAnalysis]
+    E --> F[prioritizeNeeds]
+    F --> G{Needs Clear?}
+    G -->|Yes| H[Proceed to Solution Design]
+    G -->|No| I[Clarify with Stakeholders]
+    I --> B
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| assessCurrentEnvironment | BusinessAnalyst | EngagementManager | Client IT | DeliveryTeam |
+| gatherStakeholderRequirements | BusinessAnalyst | EngagementManager | Client Stakeholders | SolutionArchitect |
+| performGapAnalysis | SolutionArchitect | EngagementManager | BusinessAnalyst | ProjectManager |
+| prioritizeNeeds | EngagementManager | ServiceDeliveryManager | Client | DeliveryTeam |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 5.3.1.2 Understand customer requirements | Upstream - initial requirements inform deeper analysis |
+| 5.3.2.2 Define solution | Downstream - needs assessment drives solution definition |
+| 5.3.1.4 Review customer business objectives | Parallel - business objectives contextualize needs analysis |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Service Delivery | Owns needs analysis and environment assessment |
+| Business Analysis | Conducts stakeholder interviews and gap analysis |
+| Solution Architecture | Evaluates technical environment constraints |
+| Account Management | Provides customer relationship and business context |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| Business Analyst | Primary needs assessment executor |
+| Solution Architect | Evaluates technical environment |
+| Engagement Manager | Oversees analysis and stakeholder alignment |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Requirements Capture Rate | Percentage of stakeholder needs documented | % |
+| Gap Coverage | Percentage of identified gaps addressed in solution design | % |
+| Analysis Cycle Time | Time from analysis start to needs assessment completion | Days |
+| Stakeholder Satisfaction | Stakeholder rating of needs analysis thoroughness | Score (1-5) |
+
+## Usage
+
+```typescript
+import { analyzeEnvironmentAndCustomerNeeds } from '@headlessly/analyze-environment-and-customer-needs'
+
+const analysis = analyzeEnvironmentAndCustomerNeeds()
+
+// Assess current customer environment
+const environment = await analysis.assessCurrentEnvironment({
+  engagementId: 'eng-789',
+  areas: ['infrastructure', 'applications', 'processes', 'data'],
+  assessmentDepth: 'comprehensive'
+})
+
+// Perform gap analysis
+const gaps = await analysis.performGapAnalysis({
+  environmentId: environment.id,
+  desiredOutcomes: ['reduce-cycle-time', 'improve-quality', 'lower-cost'],
+  priorityFramework: 'business-impact'
+})
+
+// Prioritize customer needs
+const priorities = await analysis.prioritizeNeeds({
+  gapAnalysisId: gaps.id,
+  stakeholderInput: true,
+  rankingMethod: 'weighted-scoring'
+})
+```

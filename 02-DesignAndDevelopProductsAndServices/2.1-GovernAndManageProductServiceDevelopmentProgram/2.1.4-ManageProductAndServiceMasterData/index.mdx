@@ -1,0 +1,167 @@
+---
+name: 'Manage product and service master data'
+code: '11740'
+hierarchyId: '2.1.4'
+category: 'Design and Develop Products and Services'
+processGroup: 'Govern and manage product/service development program'
+level: Process
+verb: 'Manage'
+object: 'Product And Service Master Data'
+metricsAvailable: true
+parent: '2.1'
+---
+
+# Manage product and service master data
+
+> Business-as-Code definition for manage product and service master data. Models managing product and service master data governance, storage, and access control.
+
+## Overview
+
+Controlling/authorizing to enable services' and products' data and other critical data of these functions through a well secured storage and accessibility processes backed by siloed applications/IT systems.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Manage product and service master data]
+    A --> B[Manage materials master lists]
+    A --> C[Manage bills of material]
+    A --> D[Manage routings]
+    A --> E[Manage specifications]
+    A --> F[Manage drawings]
+    A --> G[Manage product/material classification]
+    A --> H[Develop and maintain quality/inspection documents]
+    A --> I[Maintain process specification data]
+    A --> J[Manage traceability data]
+    A --> K[Review and approve data access requests]
+```
+
+## GraphDL
+
+```yaml
+manage:
+  object: Product And Service Master Data
+  actor: MasterDataManager
+  result: MasterDataRecord
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| createMasterRecord | Create a new master data entry with validated attributes |
+| updateMasterData | Modify existing master data records through controlled change process |
+| validateDataIntegrity | Verify accuracy and consistency of master data across systems |
+| controlDataAccess | Manage permissions and access rights to master data |
+| synchronizeDataSystems | Ensure master data consistency across integrated applications |
+| auditMasterData | Review master data quality and compliance with governance policies |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| masterRecordCreated | New master data entry created and validated |
+| masterDataUpdated | Existing master data record modified through change control |
+| dataIntegrityValidated | Master data accuracy and consistency verified |
+| dataAccessControlled | Access permissions updated for master data records |
+| dataSystemsSynchronized | Cross-system data consistency confirmed |
+| masterDataAudited | Master data quality and compliance audit completed |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getMasterRecords | Retrieve master data records by type, product, or classification |
+| getDataQualityMetrics | Access data quality scores and integrity check results |
+| getAccessPermissions | Retrieve data access rights by user or role |
+| getDataChangeHistory | Access audit trail of master data modifications |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[createMasterRecord] --> B[validateDataIntegrity]
+    B --> C[controlDataAccess]
+    C --> D[synchronizeDataSystems]
+    D --> E[auditMasterData]
+    E --> F{Issues Found?}
+    F -->|Yes| G[updateMasterData]
+    G --> B
+    F -->|No| H[Archive Audit Report]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| createMasterRecord | MasterDataAnalyst | MasterDataManager | Engineering, Product | Operations |
+| validateDataIntegrity | DataQualityAnalyst | MasterDataManager | IT | AllDepartments |
+| controlDataAccess | DataGovernanceOfficer | VP Engineering | IT, Security | Compliance |
+| auditMasterData | MasterDataManager | VP Engineering | Quality, IT | Executive |
+
+## Sub-Processes
+
+| ID | Name | Description |
+|----|------|-------------|
+| 2.1.4.1 | Manage materials master lists | Controlling the details of materials' storage and utilization, supplier details linked to materials, |
+| 2.1.4.2 | Manage bills of material | Managing the purchase details/bills through regular and error free updates to applications. Create m |
+| 2.1.4.3 | Manage routings | Controlling and executing the flow of operations from raw form to finished product in a defined form |
+| 2.1.4.4 | Manage specifications | Direct, supervise, and control the product/service details necessary to execute the process. Adhere  |
+| 2.1.4.5 | Manage drawings | Administering the specifications of the product/service and ensure accessibility for product alterat |
+| 2.1.4.6 | Manage product/material classification | Controlling the details of the product and the input materials. Manage classification throughout the |
+| 2.1.4.7 | Develop and maintain quality/inspection documents | Determining procedures required to assess the sustainability of defined criterion for product/servic |
+| 2.1.4.8 | Maintain process specification data | Directing and handling data with respect to the procedures followed across different functions and m |
+| 2.1.4.9 | Manage traceability data | Identifying and handling data accessed by the permitted touch points. Ensure that no data is accessi |
+| 2.1.4.10 | Review and approve data access requests | Determining the requests pertaining to data accessibility. Review the requester details based on int |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 2.1.3.4 Define product technical documentation management requirements | Upstream - documentation requirements inform master data structure |
+| 2.3.1.8 Design products/services | Downstream - design outputs generate master data records |
+| 2.1.4 Manage product and service master data (sibling activities) | Parallel - sibling activities share governance framework |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Data Management | Primary owner of master data governance and quality |
+| Engineering | Creates and consumes technical product master data |
+| IT | Maintains master data management systems and integrations |
+| Quality Assurance | Validates data quality and compliance |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| Master Data Analyst | Creates and maintains master data records |
+| Data Quality Analyst | Validates data integrity and consistency |
+| Data Governance Officer | Oversees access control and governance policies |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Data Accuracy Rate | Percentage of master data records passing quality validation | % |
+| Data Completeness | Percentage of required fields populated across master records | % |
+| Synchronization Lag | Average time for data changes to propagate across systems | Minutes |
+| Access Request Resolution Time | Average time to process data access requests | Hours |
+
+## Usage
+
+```typescript
+import { manageProductAndServiceMasterData } from '@headlessly/manage-product-and-service-master-data'
+
+const client = manageProductAndServiceMasterData()
+
+// Create a new master data entry with validated attributes
+const result = await client.createMasterRecord({
+  productId: 'prod-2025-a'
+})
+
+// Modify existing master data records through controlled change process
+const result2 = await client.updateMasterData({
+  productId: 'prod-2025-a'
+})
+```

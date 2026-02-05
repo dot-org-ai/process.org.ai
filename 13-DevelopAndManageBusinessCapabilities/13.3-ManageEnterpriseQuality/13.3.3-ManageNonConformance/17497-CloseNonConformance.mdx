@@ -1,0 +1,152 @@
+---
+name: 'Close non-conformance'
+code: '17497'
+hierarchyId: '13.3.3.5'
+category: 'Develop and Manage Business Capabilities'
+processGroup: 'Manage enterprise quality'
+level: Activity
+verb: 'Close'
+object: 'Non-conformance'
+metricsAvailable: false
+parent: '13.3.3'
+---
+
+# Close non-conformance
+
+> Business-as-Code definition for close non-conformance. Models the process of closing nonconformance.
+
+## Overview
+
+Closing nonconformance. Perform all the final processes related to the nonconformance, including documenting root causes. Document corrective and preventive actions.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Close non-conformance]
+    style A fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+close:
+  object: Non-conformance
+  actor: QualityManager
+  result: nonconformanceResult
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| defineQualityCriteria | Establish measurable quality criteria for non-conformance |
+| executeQualityCheck | Perform quality inspection or test for non-conformance |
+| analyzeResults | Evaluate quality data and identify trends for non-conformance |
+| documentFindings | Record quality findings and observations for non-conformance |
+| implementCorrectiveAction | Take corrective action based on non-conformance findings |
+| verifyEffectiveness | Confirm that corrective actions resolved non-conformance issues |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| qualityCriteriaDefined | Measurable quality criteria established |
+| qualityCheckExecuted | Quality inspection or test performed |
+| resultsAnalyzed | Quality data evaluated and trends identified |
+| findingsDocumented | Quality findings and observations recorded |
+| correctiveActionImplemented | Corrective action taken based on findings |
+| effectivenessVerified | Corrective action effectiveness confirmed |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| findNonconformance | Retrieve non-conformance records filtered by status, date, or scope |
+| getNonconformanceDetails | Get detailed information for a specific non-conformance record |
+| listNonconformanceHistory | Query the history of changes and updates to non-conformance |
+| getActiveItems | List currently active items related to non-conformance |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[defineQualityCriteria] --> B[executeQualityCheck]
+    B[executeQualityCheck] --> C[analyzeResults]
+    C[analyzeResults] --> D[documentFindings]
+    D[documentFindings] --> E[implementCorrectiveAction]
+    E[implementCorrectiveAction] --> F[verifyEffectiveness]
+    F --> G{Review Needed?}
+    G -->|Yes| B
+    G -->|No| H[Complete]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| defineQualityCriteria | QualityEngineer | QualityManager | ProcessOwners | Stakeholders |
+| executeQualityCheck | QualityAuditor | QualityManager | RegulatoryAffairs | Stakeholders |
+| analyzeResults | QualityManager | VPQuality | Operations | Stakeholders |
+| documentFindings | QualityEngineer | QualityManager | Manufacturing | Stakeholders |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 13.3.1 Establish quality requirements | Upstream - requirements drive quality activities |
+| 13.3.2 Evaluate performance to requirements | Parallel - testing validates quality |
+| 13.3.3 Manage non-conformance | Downstream - non-conformances trigger corrective actions |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Quality | Primary owner of enterprise quality management |
+| Operations | Implements quality controls in operational processes |
+| Manufacturing | Applies quality standards in production environments |
+| Regulatory Affairs | Ensures quality compliance with regulatory requirements |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| Quality Manager | Leads quality management programs |
+| Quality Engineer | Designs and implements quality controls |
+| Quality Auditor | Conducts quality audits and assessments |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Defect Rate | Number of defects per unit of output | Per Unit |
+| First Pass Yield | Percentage of units passing quality check on first attempt | % |
+| Corrective Action Closure Time | Average time to close corrective actions | Days |
+| Audit Finding Rate | Number of findings per audit conducted | Count |
+
+## Usage
+
+```typescript
+import { closeNonconformance } from '@headlessly/close-nonconformance'
+
+const client = closeNonconformance()
+
+// Establish measurable quality criteria for non-conformance
+const result = await client.defineQualityCriteria({
+  scope: 'enterprise',
+  period: 'Q1-2025'
+})
+
+// Perform quality inspection or test for non-conformance
+const assessment = await client.executeQualityCheck({
+  resultId: result.id,
+  criteria: 'standard'
+})
+
+// Evaluate quality data and identify trends for non-conformance
+await client.analyzeResults({
+  resultId: result.id,
+  format: 'detailed',
+  recipients: ['stakeholders']
+})
+```

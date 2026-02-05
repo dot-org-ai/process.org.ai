@@ -1,0 +1,152 @@
+---
+name: 'Close projects'
+code: '16418'
+hierarchyId: '13.2.3.6'
+category: 'Develop and Manage Business Capabilities'
+processGroup: 'Manage portfolio, program, and project'
+level: Activity
+verb: 'Close'
+object: 'Projects'
+metricsAvailable: false
+parent: '13.2.3'
+---
+
+# Close projects
+
+> Business-as-Code definition for close projects. Models the process of settling each contract.
+
+## Overview
+
+Settling each contract. Close each contract applicable to the project or project phase. Finalize all activities across all of the process groups in order to formally close the project or a project phase.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Close projects]
+    style A fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+close:
+  object: Projects
+  actor: ProjectManager
+  result: projectsResult
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| assessProjectStatus | Evaluate current status and progress of projects |
+| identifyDeviations | Detect variances from the planned baseline for projects |
+| evaluateImpact | Assess the impact of findings on projects |
+| developResponse | Create response actions to address projects findings |
+| communicateFindings | Report projects results to stakeholders |
+| updateProjectPlan | Revise project plans based on projects outcomes |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| projectStatusAssessed | Current status and progress evaluated |
+| deviationsIdentified | Variances from planned baseline detected |
+| impactEvaluated | Impact of findings assessed |
+| responseDeveloped | Response actions created to address findings |
+| findingsCommunicated | Results reported to stakeholders |
+| projectPlanUpdated | Project plans revised based on outcomes |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| findProjects | Retrieve projects records filtered by status, date, or scope |
+| getProjectsDetails | Get detailed information for a specific projects record |
+| listProjectsHistory | Query the history of changes and updates to projects |
+| getActiveItems | List currently active items related to projects |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[assessProjectStatus] --> B[identifyDeviations]
+    B[identifyDeviations] --> C[evaluateImpact]
+    C[evaluateImpact] --> D[developResponse]
+    D[developResponse] --> E[communicateFindings]
+    E[communicateFindings] --> F[updateProjectPlan]
+    F --> G{Review Needed?}
+    G -->|Yes| B
+    G -->|No| H[Complete]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| assessProjectStatus | ProjectManager | ProgramDirector | ProjectTeam | Stakeholders |
+| identifyDeviations | PMOAnalyst | ProjectManager | Finance | Stakeholders |
+| evaluateImpact | ProjectManager | ProgramDirector | SteeringCommittee | Stakeholders |
+| developResponse | PMOAnalyst | ProjectManager | BusinessSponsors | Stakeholders |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 13.2.3.4 Execute projects | Parallel - project execution context |
+| 13.2.3.5 Review and report project performance | Downstream - performance feeds back to project management |
+| 13.4.1 Plan for change | Parallel - project changes require change management |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Project Management Office | Provides methodology, tools, and oversight for project execution |
+| Finance | Monitors project budgets and financial performance |
+| Operations | Provides resources and operational context for projects |
+| IT | Supports project tooling and technical delivery |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| Project Manager | Leads project planning and execution |
+| Program Director | Oversees program-level coordination |
+| PMO Analyst | Provides project data analysis and reporting |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Schedule Performance Index | Ratio of earned value to planned value | Ratio |
+| Cost Performance Index | Ratio of earned value to actual cost | Ratio |
+| Scope Change Frequency | Number of approved scope changes per project phase | Count |
+| Stakeholder Satisfaction | Project stakeholder satisfaction with delivery | Score (1-5) |
+
+## Usage
+
+```typescript
+import { closeProjects } from '@headlessly/close-projects'
+
+const client = closeProjects()
+
+// Evaluate current status and progress of projects
+const result = await client.assessProjectStatus({
+  scope: 'enterprise',
+  period: 'Q1-2025'
+})
+
+// Detect variances from the planned baseline for projects
+const assessment = await client.identifyDeviations({
+  resultId: result.id,
+  criteria: 'standard'
+})
+
+// Assess the impact of findings on projects
+await client.evaluateImpact({
+  resultId: result.id,
+  format: 'detailed',
+  recipients: ['stakeholders']
+})
+```

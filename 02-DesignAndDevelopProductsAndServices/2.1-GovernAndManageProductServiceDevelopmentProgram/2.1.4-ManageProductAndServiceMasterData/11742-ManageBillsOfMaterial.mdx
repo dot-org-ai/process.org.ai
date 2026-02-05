@@ -1,0 +1,143 @@
+---
+name: 'Manage bills of material'
+code: '11742'
+hierarchyId: '2.1.4.2'
+category: 'Design and Develop Products and Services'
+processGroup: 'Govern and manage product/service development program'
+level: Activity
+verb: 'Manage'
+object: 'Bills Of Material'
+metricsAvailable: false
+parent: '2.1.4'
+---
+
+# Manage bills of material
+
+> Business-as-Code definition for manage bills of material. Models managing product and service master data governance, storage, and access control.
+
+## Overview
+
+Managing the purchase details/bills through regular and error free updates to applications. Create manual entries wherever necessary and ensure timely review of the laid processes and systems.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Manage bills of material]
+    style A fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+manage:
+  object: Bills Of Material
+  actor: MasterDataManager
+  result: MasterDataRecord
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| createMasterRecord | Create a new master data entry with validated attributes |
+| updateMasterData | Modify existing master data records through controlled change process |
+| validateDataIntegrity | Verify accuracy and consistency of master data across systems |
+| controlDataAccess | Manage permissions and access rights to master data |
+| synchronizeDataSystems | Ensure master data consistency across integrated applications |
+| auditMasterData | Review master data quality and compliance with governance policies |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| masterRecordCreated | New master data entry created and validated |
+| masterDataUpdated | Existing master data record modified through change control |
+| dataIntegrityValidated | Master data accuracy and consistency verified |
+| dataAccessControlled | Access permissions updated for master data records |
+| dataSystemsSynchronized | Cross-system data consistency confirmed |
+| masterDataAudited | Master data quality and compliance audit completed |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getMasterRecords | Retrieve master data records by type, product, or classification |
+| getDataQualityMetrics | Access data quality scores and integrity check results |
+| getAccessPermissions | Retrieve data access rights by user or role |
+| getDataChangeHistory | Access audit trail of master data modifications |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[createMasterRecord] --> B[validateDataIntegrity]
+    B --> C[controlDataAccess]
+    C --> D[synchronizeDataSystems]
+    D --> E[auditMasterData]
+    E --> F{Issues Found?}
+    F -->|Yes| G[updateMasterData]
+    G --> B
+    F -->|No| H[Archive Audit Report]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| createMasterRecord | MasterDataAnalyst | MasterDataManager | Engineering, Product | Operations |
+| validateDataIntegrity | DataQualityAnalyst | MasterDataManager | IT | AllDepartments |
+| controlDataAccess | DataGovernanceOfficer | VP Engineering | IT, Security | Compliance |
+| auditMasterData | MasterDataManager | VP Engineering | Quality, IT | Executive |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 2.1.3.4 Define product technical documentation management requirements | Upstream - documentation requirements inform master data structure |
+| 2.3.1.8 Design products/services | Downstream - design outputs generate master data records |
+| 2.1.4 Manage product and service master data (sibling activities) | Parallel - sibling activities share governance framework |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Data Management | Primary owner of master data governance and quality |
+| Engineering | Creates and consumes technical product master data |
+| IT | Maintains master data management systems and integrations |
+| Quality Assurance | Validates data quality and compliance |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| Master Data Analyst | Creates and maintains master data records |
+| Data Quality Analyst | Validates data integrity and consistency |
+| Data Governance Officer | Oversees access control and governance policies |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Data Accuracy Rate | Percentage of master data records passing quality validation | % |
+| Data Completeness | Percentage of required fields populated across master records | % |
+| Synchronization Lag | Average time for data changes to propagate across systems | Minutes |
+| Access Request Resolution Time | Average time to process data access requests | Hours |
+
+## Usage
+
+```typescript
+import { manageBillsOfMaterial } from '@headlessly/manage-bills-of-material'
+
+const client = manageBillsOfMaterial()
+
+// Create a new master data entry with validated attributes
+const result = await client.createMasterRecord({
+  productId: 'prod-2025-a'
+})
+
+// Modify existing master data records through controlled change process
+const result2 = await client.updateMasterData({
+  productId: 'prod-2025-a'
+})
+```

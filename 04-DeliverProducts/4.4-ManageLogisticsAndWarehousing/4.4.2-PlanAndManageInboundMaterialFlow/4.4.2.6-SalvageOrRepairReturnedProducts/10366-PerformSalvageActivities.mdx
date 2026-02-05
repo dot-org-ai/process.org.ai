@@ -1,0 +1,140 @@
+---
+name: 'Perform salvage activities'
+code: '10366'
+hierarchyId: '4.4.2.6.1'
+category: 'Deliver Products'
+processGroup: 'Manage logistics and warehousing'
+level: Task
+verb: 'Perform'
+object: 'Salvage Activities'
+metricsAvailable: false
+parent: '4.4.2.6'
+---
+
+# Perform salvage activities
+
+> Business-as-Code definition for perform salvage activities. Models the returns repair processes to ensure efficient movement, storage, and compliance of goods throughout the supply chain.
+
+## Overview
+
+Executing activities for reinstating the returned products. Present the customer with additional incentives of compensation in case of any defective products delivery or any discrepancy in the product specifications in order to save the order from being permanently returned.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Salvage or repair returned products] --> B[Perform salvage activities]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+perform:
+  object: Salvage Activities
+  actor: ReturnsManager
+  result: PerformOutput
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| performActivity | Perform salvage activities following established logistics procedures |
+| assessRequirements | Evaluate operational requirements for perform salvage activities |
+| coordinateExecution | Coordinate logistics activities with internal teams and external partners |
+| monitorPerformance | Track performance metrics for returns repair activities |
+| resolveExceptions | Identify and address operational exceptions and delays |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| requirementsAssessed | Operational requirements evaluated for perform salvage activities |
+| executionCoordinated | Logistics activities coordinated with all parties |
+| performanceMonitored | returns repair performance metrics updated |
+| exceptionsResolved | Operational exceptions identified and addressed |
+| activityCompleted | Perform salvage activities completed and documented |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getOperationalStatus | Retrieve current status of perform salvage activities activities |
+| findExceptions | Identify pending exceptions requiring attention |
+| getPerformanceDashboard | Query performance metrics for returns repair operations |
+| getShipmentTracking | Retrieve real-time tracking data for shipments and materials |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[assessRequirements] --> B[coordinateExecution]
+    B --> C[monitorPerformance]
+    C --> D{Exceptions?}
+    D -->|Yes| E[resolveExceptions]
+    E --> B
+    D -->|No| F[Report Completion]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| assessRequirements | ReturnsManager | VP Logistics | SupplyChain | Finance |
+| coordinateExecution | ReturnsManager | VP Logistics | Warehousing, Carriers | CustomerService |
+| monitorPerformance | LogisticsAnalyst | VP Logistics | Operations | Executive |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.4.1 Provide logistics governance | Upstream - governance policies guide logistics operations |
+| 4.1.6 Plan distribution requirements | Upstream - distribution plans drive logistics execution |
+| 4.4.3 Operate warehousing | Parallel - warehousing supports logistics flow |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Logistics | Primary owner of logistics operations |
+| Warehousing | Manages storage, picking, and staging operations |
+| Transportation | Handles carrier management and shipment execution |
+| Customer Service | Communicates delivery status to customers |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| ReturnsManager | Leads returns repair operations |
+| Logistics Coordinator | Coordinates daily logistics activities |
+| Warehouse Associate | Executes physical warehouse operations |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| On-Time Performance | Percentage of returns repair activities completed on schedule | % |
+| Cost Per Unit | Average logistics cost per unit for returns repair | USD/Unit |
+| Exception Rate | Frequency of exceptions in returns repair operations | Count/Week |
+
+## Usage
+
+```typescript
+import { performSalvageActivities } from '@headlessly/perform-salvage-activities'
+
+const client = performSalvageActivities()
+
+// Assess requirements for logistics activity
+const requirements = await client.assessRequirements({
+  activityType: 'returns-repair',
+  scope: 'salvage-activities',
+  period: '2025-08'
+})
+
+// Coordinate execution with partners
+const execution = await client.coordinateExecution({
+  requirementsId: requirements.id,
+  partners: ['carrier-a', 'warehouse-east']
+})
+```

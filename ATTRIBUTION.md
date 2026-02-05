@@ -1,48 +1,40 @@
----
-$id: https://process.org.ai/ATTRIBUTION
-$context: https://schema.org
-$type: AboutPage
-name: Attribution for process.org.ai
-description: Data source attribution and licensing information
-license: CC-BY-SA-4.0
-dateModified: 2025-01-17
----
-
 # Attribution
 
 This document provides detailed attribution for all data sources used in process.org.ai.
 
 ## Data Sources
 
-### APQC Process Classification Framework v7.4
+### APQC Process Classification Framework (PCF) v7.4
 
-- **Source**: [APQC Process Classification Framework v7.4](https://www.apqc.org/process-frameworks)
-- **License**: CC BY 4.0
-- **Copyright**: APQC (American Productivity & Quality Center)
-- **Data Used**: 1,921 business processes across 13 categories
+- **Source**: [APQC Process Classification Framework](https://www.apqc.org/process-frameworks)
+- **Provider**: American Productivity & Quality Center (APQC)
+- **License**: Used under APQC's terms for open process classification
+- **Data Used**: ~2,000 cross-industry process classifications with hierarchical IDs
 - **Attribution Required**: Yes
-- **Changes Made**: Semantic parsing into GraphDL patterns, MDXLD generation, hierarchical navigation, "and"/"or" expansion
+- **Changes Made**: Semantic structuring, MDX generation, verb/object extraction, Business-as-Code modeling
 
 **Citation**:
 ```
-APQC Process Classification Framework v7.4
+APQC Process Classification Framework (PCF) v7.4
+American Productivity & Quality Center
 https://www.apqc.org/process-frameworks
-Licensed under CC BY 4.0
+Cross-Industry Process Classification
 ```
 
 ## How We Use This Data
 
-The process.org.ai ontology extends APQC Process Classification Framework v7.4 by:
+The process.org.ai ontology extends APQC PCF by:
 
-1. **Semantic Naming**: Converting process names to GraphDL patterns (verb.Object.preposition.Object)
-2. **MDXLD Generation**: Creating structured MDX files with frontmatter and metadata
-3. **Expansion**: Splitting compound processes ("and"/"or") into individual files (1,921 → 2,704 files)
-4. **Hierarchical Navigation**: Building 5-level hierarchy with parent-child relationships
-5. **Business-as-Code Integration**: Enabling semantic patterns for `$.Process.develop.Vision` usage
+1. **Hierarchical Structure**: 5-level hierarchy (Category -> Process Group -> Process -> Activity -> Task)
+2. **Semantic Modeling**: Verb/object extraction for each process name
+3. **MDX Documentation**: Structured documentation with actions, events, searches, and workflows
+4. **Business-as-Code Integration**: Enabling `$.Process.execute()` patterns
+5. **RACI Matrices**: Responsibility assignment for process activities
+6. **SDK Integration**: Seamless integration with sdk.do and the .org.ai ecosystem
 
 ## Our License
 
-This derived work is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), maintaining compatibility with the original APQC Process Classification Framework v7.4 license while using the current recommended version.
+This derived work is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). We apply CC BY-SA 4.0 to our derived work to ensure attribution and that improvements remain open.
 
 ## Required Attribution
 
@@ -50,36 +42,25 @@ When using process.org.ai, please include:
 
 ```
 Based on process.org.ai (https://process.org.ai)
-Data sourced from APQC Process Classification Framework v7.4 (https://www.apqc.org/process-frameworks)
+Data sourced from APQC Process Classification Framework v7.4
+(https://www.apqc.org/process-frameworks)
+American Productivity & Quality Center
 Licensed under CC BY-SA 4.0
-```
-
-For academic or research use, you may cite as:
-
-```bibtex
-@software{{processorgai2025,
-  title = {{process.org.ai: APQC Process Classification Framework for Business-as-Code}},
-  author = {{{{.do Platform Team}}}},
-  year = {{2025}},
-  url = {{https://process.org.ai}},
-  license = {{CC-BY-SA-4.0}},
-  note = {{Based on APQC Process Classification Framework v7.4}}
-}}
 ```
 
 ## Acknowledgments
 
-We are grateful to APQC (American Productivity & Quality Center) for creating and maintaining the Process Classification Framework, the world's most widely used process framework. Their work enables organizations to benchmark, improve, and understand business processes across industries.
+We are grateful to the American Productivity & Quality Center (APQC) for developing and maintaining the Process Classification Framework, the de facto standard for business process classification used by organizations worldwide.
 
-APQC has been a pioneer in process management since 1977, providing research, benchmarking, and best practices to organizations worldwide.
+The PCF provides a common language for organizations to identify and communicate their business processes, enabling benchmarking, process improvement, and knowledge sharing across industries.
 
 ## Contact
 
 For questions about attribution or licensing:
-- **Website**: https://process.org.ai
-- **GitHub**: https://github.com/dot-org-ai/process.org.ai/issues
-- **Community**: https://github.com/dot-org-ai/community
+- Website: https://process.org.ai
+- GitHub: https://github.com/org-ai/process.org.ai/issues
+- Community: https://github.com/dot-org-ai/community
 
 ## Updates
 
-This attribution document is maintained alongside the process.org.ai repository. Last updated: 2025-01-17
+This attribution document is maintained alongside the process.org.ai repository. Last updated: 2026-02-05

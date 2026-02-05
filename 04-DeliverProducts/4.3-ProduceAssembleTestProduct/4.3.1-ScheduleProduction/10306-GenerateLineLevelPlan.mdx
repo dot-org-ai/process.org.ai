@@ -1,0 +1,141 @@
+---
+name: 'Generate line level plan'
+code: '10306'
+hierarchyId: '4.3.1.2'
+category: 'Deliver Products'
+processGroup: 'Produce/Assemble/Test product'
+level: Activity
+verb: 'Generate'
+object: 'Line Level Plan'
+metricsAvailable: false
+parent: '4.3.1'
+---
+
+# Generate line level plan
+
+> Business-as-Code definition for generate line level plan. Models the scheduling activities within manufacturing to ensure efficient and compliant production operations.
+
+## Overview
+
+Initiating the line-level plan for production. Break down the production schedule into specific lines, specifying the various objectives the production schedule.
+
+## Process Hierarchy
+
+```mermaid
+graph TD
+    A[Schedule production] --> B[Generate line level plan]
+    style B fill:#f9f,stroke:#333
+```
+
+## GraphDL
+
+```yaml
+generate:
+  object: Line Level Plan
+  actor: ProductionScheduler
+  result: GenerateOutcome
+```
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| generateActivity | Generate line level plan per established procedures |
+| reviewInputs | Assess required inputs and prerequisites for generate line level plan |
+| executeProcess | Carry out the core scheduling tasks following standard operating procedures |
+| documentResults | Record outcomes, observations, and any deviations from standard |
+| reportStatus | Communicate status and results to supervisors and downstream teams |
+
+## Events
+
+| Event | Description |
+|-------|-------------|
+| inputsReviewed | Inputs and prerequisites assessed for generate line level plan |
+| processExecuted | Core scheduling tasks completed per standard procedures |
+| resultsDocumented | Outcomes and observations recorded in production records |
+| statusReported | Status and results communicated to relevant teams |
+| deviationDetected | Non-standard condition identified during process execution |
+
+## Searches
+
+| Search | Description |
+|--------|-------------|
+| getProductionStatus | Retrieve current status of generate line level plan activities |
+| getProductionRecords | Query production records for a specific batch, lot, or period |
+| findDeviations | Identify deviations from standard operating procedures |
+| getPerformanceMetrics | Query performance metrics for scheduling activities |
+
+## Process Flow
+
+```mermaid
+graph TD
+    A[reviewInputs] --> B[executeProcess]
+    B --> C{Deviations?}
+    C -->|Yes| D[documentResults]
+    D --> E[escalateIssue]
+    E --> B
+    C -->|No| F[documentResults]
+    F --> G[reportStatus]
+```
+
+## RACI Matrix
+
+| Activity | Responsible | Accountable | Consulted | Informed |
+|----------|-------------|-------------|-----------|----------|
+| reviewInputs | ProductionScheduler | PlantManager | QualityAssurance | SupplyChain |
+| executeProcess | ProductionScheduler | PlantManager | Maintenance | Quality |
+| documentResults | ProductionScheduler | PlantManager | QualityAssurance | Regulatory |
+
+## Related Processes
+
+| Process | Relationship |
+|---------|-------------|
+| 4.3.1 Schedule production | Parent process |
+| 4.3.3 Perform quality testing | Parallel - quality testing validates production output |
+| 4.1.5 Create and manage master production schedule | Upstream - MPS provides production targets |
+
+## Related Departments
+
+| Department | Role |
+|-----------|------|
+| Manufacturing | Primary owner of production operations |
+| Quality Assurance | Validates product quality and process compliance |
+| Maintenance | Ensures equipment reliability for production |
+| Supply Chain | Coordinates materials availability for production |
+
+## Related Occupations
+
+| Occupation | Involvement |
+|-----------|-------------|
+| ProductionScheduler | Leads scheduling activities on the shop floor |
+| Quality Inspector | Verifies product and process quality |
+| Production Supervisor | Oversees daily production execution |
+
+## KPIs
+
+| KPI | Description | Unit |
+|-----|-------------|------|
+| Overall Equipment Effectiveness | Combined measure of availability, performance, and quality | % |
+| First Pass Yield | Percentage of products passing quality on first attempt | % |
+| Production Cycle Time | Average time to complete generate line level plan | Hours |
+
+## Usage
+
+```typescript
+import { generateLineLevelPlan } from '@headlessly/generate-line-level-plan'
+
+const client = generateLineLevelPlan()
+
+// Review inputs for production activity
+const inputs = await client.reviewInputs({
+  productionOrderId: 'PO-2025-0847',
+  checkMaterials: true,
+  checkEquipment: true
+})
+
+// Execute the production process
+const result = await client.executeProcess({
+  inputsId: inputs.id,
+  standardProcedure: 'SOP-SCHE-001'
+})
+```
